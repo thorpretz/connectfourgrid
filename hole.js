@@ -26,6 +26,20 @@ hole.prototype.show = function(){
 hole.prototype.contains = function(x, y){
   return (x > this.x && x < this.x + this.w && y > this.y && y < this.y + this.w);
 }
+hole.prototype.rowL = function(){
+	return this.j;
+}
+hole.prototype.colL = function(){
+	return this.i;
+}
+hole.prototype.checkhole = function(){
+	if(this.redchip || this.yellowchip){
+	return true;
+	}
+	else {
+		return false;
+	}
+}
 
 hole.prototype.Hplay = function() {
     if (this.j != 5) {
@@ -49,6 +63,7 @@ hole.prototype.wincheck = function(){
   for (var i = 0; i < 7; i++) {
     for (var j = 0; j < 3; j++) {
         if (grid[i][j].redchip & grid[i][j + 1].redchip & grid[i][j + 2].redchip & grid[i][j + 3].redchip ) {
+		document.getElementById("outprint").innerHTML = "red player has won";
         return true;
         }
       }
@@ -56,6 +71,7 @@ hole.prototype.wincheck = function(){
     for (var i = 0; i < 4; i++) {
       for (var j = 0; j < 6; j++) {
           if (grid[i][j].redchip & grid[i + 1][j].redchip & grid[i + 2][j].redchip & grid[i + 3][j].redchip ) {
+		  document.getElementById("outprint").innerHTML = "red player has won";
           return true;
           }
         }
@@ -63,6 +79,7 @@ hole.prototype.wincheck = function(){
       for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 3; j++) {
             if (grid[i][j].redchip & grid[i + 1][j + 1].redchip & grid[i + 2][j + 2].redchip & grid[i + 3][j + 3].redchip ) {
+			document.getElementById("outprint").innerHTML = "red player has won";
               return true;
             }
           }
@@ -70,6 +87,7 @@ hole.prototype.wincheck = function(){
         for (var i = 3; i < 7; i++) {
           for (var j = 0; j < 3; j++) {
               if (grid[i][j].redchip & grid[i - 1][j + 1].redchip & grid[i - 2][j + 2].redchip & grid[i - 3][j + 3].redchip ) {
+			  document.getElementById("outprint").innerHTML = "red player has won";
                 return true;
               }
             }
@@ -78,6 +96,7 @@ hole.prototype.wincheck = function(){
   for (var i = 0; i < 7; i++) {
     for (var j = 0; j < 3; j++) {
         if (grid[i][j].yellowchip & grid[i][j + 1].yellowchip & grid[i][j + 2].yellowchip & grid[i][j + 3].yellowchip ) {
+		document.getElementById("outprint").innerHTML = "yellow player has won";
         return true;
         }
       }
@@ -85,6 +104,7 @@ hole.prototype.wincheck = function(){
     for (var i = 0; i < 4; i++) {
       for (var j = 0; j < 6; j++) {
           if (grid[i][j].yellowchip & grid[i + 1][j].yellowchip & grid[i + 2][j].yellowchip & grid[i + 3][j].yellowchip ) {
+		  document.getElementById("outprint").innerHTML = "yellow player has won";
            return true;
           }
         }
@@ -92,6 +112,7 @@ hole.prototype.wincheck = function(){
       for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 3; j++) {
             if (grid[i][j].yellowchip & grid[i + 1][j + 1].yellowchip & grid[i + 2][j + 2].yellowchip & grid[i + 3][j + 3].yellowchip ) {
+			document.getElementById("outprint").innerHTML = "yellow player has won";
               return true;
             }
           }
@@ -99,6 +120,7 @@ hole.prototype.wincheck = function(){
         for (var i = 3; i < 7; i++) {
           for (var j = 0; j < 3; j++) {
               if (grid[i][j].yellowchip & grid[i - 1][j + 1].yellowchip & grid[i - 2][j + 2].yellowchip & grid[i - 3][j + 3].yellowchip ) {
+			  document.getElementById("outprint").innerHTML = "yellow player has won";
                 return true;
               }
             }

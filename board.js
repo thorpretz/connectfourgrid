@@ -1,4 +1,4 @@
-
+var gamestate = true;
 
 function make2DArray(cols, rows) {
   var arr = new Array(cols);
@@ -26,17 +26,19 @@ function setup() {
 }
 
 function mousePressed() {
+if (gamestate){
   for (var i = 0; i < col; i++) {
     for (var j = 0; j < row; j++) {
       if (grid[i][j].contains(mouseX, mouseY)) {
             if (grid[i][j].Hplay()){
             yellowturn();
             if(grid[i][j].wincheck()){
-              console.log("player has won");
+			  gamestate = false;
             }
           }
       }
     }
+  }
   }
 }
 
@@ -49,33 +51,34 @@ function draw() {
   }
 }
 
+
+var yellowlocation = null;
+
 function yellowturn() {
-  for (var i = 0; i < col; i++) {
-    for (var j = 0; j < row; j++) {
-        if (grid[i][j].yellowchip){
-          if(grid[i][j - 1].yellowchip == false & grid[i][j - 1].redchip == false) {
-          //grid[i][j - 1].yellowchip = true;
-            var location = grid[i][j - 1];
-          }
-            else if(i < 6 ){
-              if (grid[i + 1][j].yellowchip == false & grid[i + 1][j].redchip == false){
-                var location = grid[i + 1][j];
-            }
-          }
-        }
-    }
-  }
-  if(location == null){
+var moved = true;
+  if(yellowlocation == null){
+	while(moved) {
       var spot = randomIntFromInterval(0,6);
       if (grid[spot][5].yellowchip == false & grid[spot][5].redchip == false){
         grid[spot][5].yellowchip = true;
+		yellowlocation = grid[spot][5];
+		moved = false;
+		}
     }
   }
   else {
-    location.yellowchip = true;
+	if (yellowlocation.rowL() > 0 & grid[yellowlocation.colL()][yellowlocation.rowL() - 1].redchip == false & grid[yellowlocation.colL()][yellowlocation.rowL() - 1].yellowchip == false){
+		yellowlocation = grid[yellowlocation.colL()][yellowlocation.rowL() - 1];
+		yellowlocation.yellowchip = true;
+	}
+	else if (yellowlocation.colL() + 1 <= 6 & yellowlocation.rowL() - 2 >= 0){
+		for(var i = 0; i < 5; i++){
+				
+		}
+	}
   }
-  //grid[][].yellowchip = true;
-}
+ }
+
 
 
 function randomIntFromInterval(min,max)
