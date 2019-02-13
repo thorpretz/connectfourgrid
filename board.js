@@ -67,14 +67,17 @@ var moved = true;
     }
   }
   else {
-	if (yellowlocation.rowL() > 0 & grid[yellowlocation.colL()][yellowlocation.rowL() - 1].redchip == false & grid[yellowlocation.colL()][yellowlocation.rowL() - 1].yellowchip == false){
+	if (yellowlocation.rowL() > 0 & grid[yellowlocation.colL()][yellowlocation.rowL() - 1].checkhole() == false){
 		yellowlocation = grid[yellowlocation.colL()][yellowlocation.rowL() - 1];
 		yellowlocation.yellowchip = true;
 	}
-	else if (yellowlocation.colL() + 1 <= 6 & yellowlocation.rowL() - 2 >= 0){
-		for(var i = 0; i < 5; i++){
-				
-		}
+	else if (yellowlocation.colL() + 1 < 7 & grid[yellowlocation.colL() + 1][yellowlocation.rowL()].checkhole() == false & grid[yellowlocation.colL() + 1][yellowlocation.rowL()].Vplay()){
+		yellowlocation = grid[yellowlocation.colL() + 1][yellowlocation.rowL()];
+		yellowlocation.yellowchip = true;
+	}
+	else if (yellowlocation.colL() - 1 > 0 & grid[yellowlocation.colL() - 1][yellowlocation.rowL()].checkhole() == false & grid[yellowlocation.colL() - 1][yellowlocation.rowL()].Vplay()){
+		yellowlocation = grid[yellowlocation.colL() - 1][yellowlocation.rowL()];
+		yellowlocation.yellowchip = true;
 	}
   }
  }

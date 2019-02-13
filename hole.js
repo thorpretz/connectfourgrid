@@ -34,11 +34,23 @@ hole.prototype.colL = function(){
 }
 hole.prototype.checkhole = function(){
 	if(this.redchip || this.yellowchip){
-	return true;
+		return true;
 	}
 	else {
 		return false;
 	}
+}
+hole.prototype.Vplay = function() {
+if (this.j != 5) {
+	for(var j = this.j + 1; j <= 5; j++){
+		if (grid[this.i][j].redchip == false) {
+			if(grid[this.i][j].yellowchip == false){
+				return false;
+			}
+		}
+	}
+}
+	return true;
 }
 
 hole.prototype.Hplay = function() {
