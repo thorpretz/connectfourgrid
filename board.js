@@ -117,10 +117,28 @@ function check3() {
       }
     }
   }
+  for (var y = 0; y < 6; y++){
+    for (var x = 3; x < 7; x++){
+      if (grid[x][y].checkhole() == false & grid[x][y].Vplay()){
+        if (grid[x - 1][y].yellowchip & grid[x - 2][y].yellowchip & grid[x - 3][y].yellowchip) {
+          return grid[x][y];
+        }
+      }
+    }
+  }
   for (var x = 4; x < 7; x++){
     for (var y = 0; y < 3; y++){
       if (grid[x][y].checkhole() == false & grid[x][y].Vplay()){
         if (grid[x - 1][y + 1].yellowchip & grid[x - 2][y + 2].yellowchip & grid[x - 3][y + 3].yellowchip) {
+          return grid[x][y];
+        }
+      }
+    }
+  }
+  for (var y = 0; y < 6; y++){
+    for (var x = 3; x < 7; x++){
+      if (grid[x][y].checkhole() == false & grid[x][y].Vplay()){
+        if (grid[x - 1][y].redchip & grid[x - 2][y].redchip & grid[x - 3][y].redchip) {
           return grid[x][y];
         }
       }
